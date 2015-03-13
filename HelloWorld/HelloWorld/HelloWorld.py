@@ -118,7 +118,7 @@ class Simple_drawing_window(QWidget):
 def main():
     app = QApplication(sys.argv)
 
-    w = Simple_drawing_window3()
+    w = Simple_drawing_window2()
     w.show()
 
     return app.exec_()
