@@ -23,15 +23,13 @@ class Simple_drawing_window3(QWidget):
         rady = 100
         # draw red circles
         paint.setPen(Qt.red)
-        #for k in range(125, 220, 10):
-       # center = QPoint(k, k)
-        # optionally fill each circle yellow
-        paint.setBrush(Qt.yellow)
-        paint.drawEllipse(QPoint(250,250), radx, rady)
+        for k in range(125, 220, 10):
+            center = QPoint(k, k)
+            # optionally fill each circle yellow
+            paint.setBrush(Qt.yellow)
+            paint.drawEllipse(center, radx, rady)
         paint.end()
 
-
-        paint.drawRects()
 
 class Simple_drawing_window2(QWidget):
 
@@ -41,26 +39,53 @@ class Simple_drawing_window2(QWidget):
         self.setGeometry(300, 300, 350, 350)
         self.setWindowTitle('Draw circles')
     def paintEvent(self, event):
-        paint = QPainter()
-        paint.begin(self)
-        # optional
-        paint.setRenderHint(QPainter.Antialiasing)
-        # make a white drawing background
-        paint.setBrush(Qt.white)
-        paint.drawRect(event.rect())
-        # for circle make the ellipse radii match
-        radx = 100
-        rady = 100
-        # draw red circles
-        paint.setPen(Qt.red)
-        #for k in range(125, 220, 10):
-       # center = QPoint(k, k)
-        # optionally fill each circle yellow
-        paint.setPen(Qt.yellow)
-        paint.drawRects(50,50,200,200)
 
-        paint.end()
+        qp = QPainter()
+        qp.begin(self)
+        self.drawBrushes(qp)
+        qp.end()
 
+    def drawBrushes(self, qp):
+      
+        brush = QBrush(Qt.SolidPattern)
+        qp.setBrush(brush)
+        qp.drawRect(10, 15, 90, 60)
+
+        brush.setStyle(Qt.Dense1Pattern)
+        qp.setBrush(brush)
+        qp.drawRect(130, 15, 90, 60)
+
+        brush.setStyle(Qt.Dense2Pattern)
+        qp.setBrush(brush)
+        qp.drawRect(250, 15, 90, 60)
+
+        brush.setStyle(Qt.Dense3Pattern)
+        qp.setBrush(brush)
+        qp.drawRect(10, 105, 90, 60)
+
+        brush.setStyle(Qt.DiagCrossPattern)
+        qp.setBrush(brush)
+        qp.drawRect(10, 105, 90, 60)
+
+        brush.setStyle(Qt.Dense5Pattern)
+        qp.setBrush(brush)
+        qp.drawRect(130, 105, 90, 60)
+
+        brush.setStyle(Qt.Dense6Pattern)
+        qp.setBrush(brush)
+        qp.drawRect(250, 105, 90, 60)
+
+        brush.setStyle(Qt.HorPattern)
+        qp.setBrush(brush)
+        qp.drawRect(10, 195, 90, 60)
+
+        brush.setStyle(Qt.VerPattern)
+        qp.setBrush(brush)
+        qp.drawRect(130, 195, 90, 60)
+
+        brush.setStyle(Qt.BDiagPattern)
+        qp.setBrush(brush)
+        qp.drawRect(250, 195, 90, 60)
 
         
 
@@ -93,7 +118,7 @@ class Simple_drawing_window(QWidget):
 def main():
     app = QApplication(sys.argv)
 
-    w = Simple_drawing_window2()
+    w = Simple_drawing_window3()
     w.show()
 
     return app.exec_()
