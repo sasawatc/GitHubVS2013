@@ -26,5 +26,15 @@ class Hanoi(object):
     def solve(self):
         self.move_tower(3, self.startp, self.destinationp, self.workspacep)
 
+class Pole():
+    def __init__(self, name, stack, top_pos, x_pos, y_pos, thickness, length, color):
+        ;
+    def showpole(self):
+        ;
+    def pushdisk(self, disk):
+        ;
+    def popdisk(self):
+        ;
+
 h = Honoi()
 h.solve
