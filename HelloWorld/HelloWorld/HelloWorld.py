@@ -2,6 +2,69 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 import sys
 
+ ##  CIRCLE
+class Simple_drawing_window3(QWidget):
+
+    def __init__(self):
+        QWidget.__init__(self, None)
+        self.setWindowTitle("Simple Drawing")
+        self.setGeometry(300, 300, 350, 350)
+        self.setWindowTitle('Draw circles')
+    def paintEvent(self, event):
+        paint = QPainter()
+        paint.begin(self)
+        # optional
+        paint.setRenderHint(QPainter.Antialiasing)
+        # make a white drawing background
+        paint.setBrush(Qt.white)
+        paint.drawRect(event.rect())
+        # for circle make the ellipse radii match
+        radx = 100
+        rady = 100
+        # draw red circles
+        paint.setPen(Qt.red)
+        #for k in range(125, 220, 10):
+       # center = QPoint(k, k)
+        # optionally fill each circle yellow
+        paint.setBrush(Qt.yellow)
+        paint.drawEllipse(QPoint(250,250), radx, rady)
+        paint.end()
+
+
+        paint.drawRects()
+
+class Simple_drawing_window2(QWidget):
+
+    def __init__(self):
+        QWidget.__init__(self, None)
+        self.setWindowTitle("Simple Drawing")
+        self.setGeometry(300, 300, 350, 350)
+        self.setWindowTitle('Draw circles')
+    def paintEvent(self, event):
+        paint = QPainter()
+        paint.begin(self)
+        # optional
+        paint.setRenderHint(QPainter.Antialiasing)
+        # make a white drawing background
+        paint.setBrush(Qt.white)
+        paint.drawRect(event.rect())
+        # for circle make the ellipse radii match
+        radx = 100
+        rady = 100
+        # draw red circles
+        paint.setPen(Qt.red)
+        #for k in range(125, 220, 10):
+       # center = QPoint(k, k)
+        # optionally fill each circle yellow
+        paint.setPen(Qt.yellow)
+        paint.drawRects(50,50,200,200)
+
+        paint.end()
+
+
+        
+
+
 class Simple_drawing_window(QWidget):
 
     def __init__(self):
@@ -30,7 +93,7 @@ class Simple_drawing_window(QWidget):
 def main():
     app = QApplication(sys.argv)
 
-    w = Simple_drawing_window()
+    w = Simple_drawing_window2()
     w.show()
 
     return app.exec_()
